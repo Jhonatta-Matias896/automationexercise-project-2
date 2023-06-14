@@ -28,6 +28,9 @@ verificacaoDeNomeUsuario:'b',
 loginCampoEmail:'[data-qa="login-email"]',
 loginCampoSenha:'[data-qa="login-password"]',
 btnLogin:'[data-qa="login-button"]',
+msgErrorEmailorSenha:'.login-form > form > p',
+msgErrorLogin: 'Your email or password is incorrect!',
+
 
 
 
