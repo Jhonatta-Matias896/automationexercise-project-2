@@ -20,10 +20,11 @@ describe('Testes na tela de login', () => {
         cy.get(elements.msgErrorEmailorSenha).should('have.text', elements.msgErrorLogin)
         
     });
-    it.only('Teste 04: Tentativa de login com email mal formatado', () => {
+    //TESTE COM RESULTADO FALSO-POSITIVO
+    it('Teste 04: Tentativa de login com email mal formatado', () => {
         cy.login(Cypress.env('emailSem@'),Cypress.env('senhaUsuario'))
         cy.get('input[type="email"][data-qa="login-email"]').invoke('show')
-        .should('be.visible')
+        
 
     });
 
