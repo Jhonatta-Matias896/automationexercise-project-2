@@ -3,13 +3,13 @@ const faker = require('faker-br')
 const elements = require('../../../support/Elementos/globalElements').ELEMENTS
 
 
-describe('Teste válidos na tela de cadastro', ()=>{
-beforeEach(() => {
-    cy.visit('/login')
-});
-    Cypress._.times(1,()=>{
-        it('Teste 01: Cadastro com sucesso', ()=>{
-            const nomeUsuario = faker.name.firstName()   
+describe('Teste válidos na tela de cadastro', () => {
+    beforeEach(() => {
+        cy.visit('/login')
+    });
+    Cypress._.times(1, () => {
+        it.only('Teste 01: Cadastro com sucesso', () => {
+            const nomeUsuario = faker.name.firstName()
             cy.get(elements.campoNome).type(nomeUsuario)
             cy.get(elements.campoEmail).type(faker.internet.email(nomeUsuario))
             cy.get(elements.btnSingUp).click()
@@ -24,7 +24,7 @@ beforeEach(() => {
             cy.get(elements.ultimoNome).type(faker.name.lastName())
             cy.get(elements.nomeEmpresa).type(faker.company.companyName())
             cy.get(elements.nomeRua).type(faker.address.streetName())
-            cy.get(elements.nomePais).select('Canada')
+            cy.get(elements.nomePais).select([1])
             cy.get(elements.nomeEstado).type(faker.address.state())
             cy.get(elements.nomeCidade).type(faker.address.city())
             cy.get(elements.cep).type(faker.address.zipCode())
@@ -33,12 +33,12 @@ beforeEach(() => {
             cy.contains(elements.msgDeContaCriada).should('be.visible')
             cy.get(elements.btnContinuar).click()
             cy.get(elements.verificacaoDeNomeUsuario).should('have.text', nomeUsuario)
-                       
-       });
+
+        });
 
     })
 
-    it('Teste 02: Cadastro com sucesso(ALTERNATIVO)', ()=>{
+    it('Teste 02: Cadastro com sucesso(ALTERNATIVO)', () => {
         const nomeUsuario = faker.name.firstName()
         faker.internet.email()
 
@@ -65,20 +65,20 @@ beforeEach(() => {
         cy.contains(elements.msgDeContaCriada).should('be.visible')
         cy.get(elements.btnContinuar).click()
         cy.get(elements.verificacaoDeNomeUsuario).should('have.text', nomeUsuario)
-        
-        
-   });
 
-   it('Teste 03: Verifica se o cadastro foi concluído com sucesso', () => {
-    cy.get(elements.loginCampoEmail).type(Cypress.env('email01'))
-    cy.get(elements.loginCampoSenha).type(Cypress.env('senhaUsuario'))
-    cy.get(elements.btnLogin).click()
-    cy.get(':nth-child(10) > a').should('have.visible', Cypress.env('usuario01'))
-     });
 
-     it('', () => {
-        
-     });
+    });
+
+    it('Teste 03: Verifica se o cadastro foi concluído com sucesso', () => {
+        cy.get(elements.loginCampoEmail).type(Cypress.env('email01'))
+        cy.get(elements.loginCampoSenha).type(Cypress.env('senhaUsuario'))
+        cy.get(elements.btnLogin).click()
+        cy.get(':nth-child(10) > a').should('have.visible', Cypress.env('usuario01'))
+    });
+
+    it('', () => {
+
+    });
 
 
 
