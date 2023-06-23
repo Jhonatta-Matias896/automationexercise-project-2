@@ -8,7 +8,7 @@ describe('Teste válidos na tela de cadastro', () => {
         cy.visit('/login')
     });
     Cypress._.times(1, () => {
-        it.only('Teste 01: Cadastro com sucesso', () => {
+        it('Teste 01: Cadastro com sucesso', () => {
             const nomeUsuario = faker.name.firstName()
             cy.get(elements.campoNome).type(nomeUsuario)
             cy.get(elements.campoEmail).type(faker.internet.email(nomeUsuario))
@@ -69,11 +69,9 @@ describe('Teste válidos na tela de cadastro', () => {
 
     });
 
-    it('Teste 03: Verifica se o cadastro foi concluído com sucesso', () => {
-        cy.get(elements.loginCampoEmail).type(Cypress.env('email01'))
-        cy.get(elements.loginCampoSenha).type(Cypress.env('senhaUsuario'))
-        cy.get(elements.btnLogin).click()
-        cy.get(':nth-child(10) > a').should('have.visible', Cypress.env('usuario01'))
+    it.only('Teste 03: Verifica se o cadastro foi concluído com sucesso', () => {
+        cy.login(Cypress.env('email01'), Cypress.env('senhaUsuario'))
+        cy.contains(Cypress.env('usuario01')).should('be.visible')
     });
 
     it('', () => {
