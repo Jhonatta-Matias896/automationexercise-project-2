@@ -24,12 +24,15 @@ msgDeContaCriada:'Congratulations! Your new account has been successfully create
 btnContinuar:'[data-qa="continue-button"]',
 verificacaoDeNomeUsuario:'b',
 
-//ELEMENTOS REFERENES A TELA DE LOGIN
+//ELEMENTOS REFERENTES A TELA DE LOGIN
 loginCampoEmail:'[data-qa="login-email"]',
 loginCampoSenha:'[data-qa="login-password"]',
 btnLogin:'[data-qa="login-button"]',
 msgErrorEmailorSenha:'.login-form > form > p',
 msgErrorLogin: 'Your email or password is incorrect!',
+//ELEMENTOS REFERENTES A TESTE DO BING
+pesquisaBing:'#sb_form_q',
+btnAceitarTermos:'#bnp_btn_accept'
 
 
 
