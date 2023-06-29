@@ -1,3 +1,6 @@
+//AUTOMAÇÃO PARA FARMAR PONTOS NO MICROSOFT EDGE
+
+
 // const elements = require('../../support/Elementos/globalElements').ELEMENTS
 
 // describe('', () => {

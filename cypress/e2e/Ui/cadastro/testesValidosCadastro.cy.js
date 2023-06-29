@@ -9,13 +9,13 @@ describe('Teste válidos na tela de cadastro', () => {
     });
     Cypress._.times(1, () => {
 
-        it.only('Teste 01: Cadastro com sucesso', () => {
+        it('Teste 01: Cadastro com sucesso', () => {
             const anoAleatorio = Cypress._.random(1900, 2021);
-
             const nomeUsuario = faker.name.firstName()
             cy.get(elements.campoNome).type(nomeUsuario)
             cy.get(elements.campoEmail).type(faker.internet.email(nomeUsuario))
             cy.get(elements.btnSingUp).click()
+            cy.url().should('be.equal', `${Cypress.config('baseUrl')}signup`)
             cy.contains(elements.msgDeCadastro).should('be.visible')
             cy.get(elements.tituloGenero).click()
             cy.get(elements.campoSenha).type(Cypress.env('senhaUsuario'))
@@ -31,7 +31,7 @@ describe('Teste válidos na tela de cadastro', () => {
             cy.get(elements.ultimoNome).type(faker.name.lastName())
             cy.get(elements.nomeEmpresa).type(faker.company.companyName())
             cy.get(elements.nomeRua).type(faker.address.streetName())
-            cy.get(elements.nomePais).select(Cypress._.random(0,6))
+            cy.get(elements.nomePais).select(Cypress._.random(0, 6))
             cy.get(elements.nomeEstado).type(faker.address.state())
             cy.get(elements.nomeCidade).type(faker.address.city())
             cy.get(elements.cep).type(faker.address.zipCode())
@@ -54,6 +54,7 @@ describe('Teste válidos na tela de cadastro', () => {
         cy.get(elements.campoNome).type(nomeUsuario)
         cy.get(elements.campoEmail).type(faker.internet.email(nomeUsuario))
         cy.get(elements.btnSingUp).click()
+        cy.url().should('be.equal', `${Cypress.config('baseUrl')}signup`)
         cy.contains(elements.msgDeCadastro).should('be.visible')
         cy.get(elements.tituloGenero).click()
         cy.get(elements.campoSenha).type(Cypress.env('senhaUsuario'))
